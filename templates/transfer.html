@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Funds</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style2.css">
+    <style>
+
+        .container {
+            max-width: 600px;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        .alert {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Transfer Funds</h1>
+        
+        <!-- Display Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-{{ messages[0][0] }} mt-3">
+                    {{ messages[0][1] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('transfer', username=user.username) }}" method="POST">
+            <div class="mb-3">
+                <label for="receiver" class="form-label">Receiver's Username</label>
+                <input type="text" id="receiver" name="receiver" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount</label>
+                <input type="number" id="amount" name="amount" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Transfer</button>
+        </form>
+
+        <div class="mt-4">
+            <a href="{{ url_for('user_menu', username=user.username) }}" class="btn btn-secondary btn-sm">Back to User Menu</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

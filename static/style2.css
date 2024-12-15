@@ -1,0 +1,117 @@
+body {
+    background-image: url("bg3.jpg"); /* Add your image path here */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the background fixed during scroll */
+    color: #2afefe; /* Ensures text color remains readable */
+    padding-top: 50px;
+}
+
+.container {
+    max-width: 700px;
+    
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds subtle shadow for better UI */
+    position: relative;
+
+
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5 );
+    
+    
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+}
+
+h1{
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    color: #2afefe;
+}
+
+.btn {
+    margin: 10px;
+    padding: 14px 40px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 12px;
+    border: 2px solid #8c8c8c;
+  }
+  .btn::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #167c96;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  /* glow */
+  .btn::before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #FF0000, #FF7300, #FFFB00, #48FF00,
+      #00FFD5, #002BFF, #FF00C8, #FF0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height:  calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+  }
+  
+  @keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+  }
+  
+  /* hover */
+  .btn:hover::before {
+    opacity: 1;
+  }
+  
+  .btn:active:after {
+    background: transparent;
+  }
+  
+  .btn:active {
+    color: #000000;
+
+    font-weight: bold;
+  }
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.alert {
+    margin-bottom: 20px;
+}
+
+.quick-actions a {
+    display: block;
+    margin-bottom: 10px;
+}

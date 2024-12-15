@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search User</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style3.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #343a40;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Search User</h1>
+        <form action="{{ url_for('search') }}" method="POST">
+            <div class="mb-3">
+                <label for="user" class="form-label">Username:</label>
+                <input type="text" id="user" name="user" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </form>
+
+        {% if user is not none %}
+            {% if user %}
+                <div class="mt-4">
+                    <h2>User found:</h2>
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Balance:</strong> {{ balance }} USD</p>
+                </div>
+            {% else %}
+                <div class="mt-4 text-center">
+                    <p class="text-danger">User not found.</p>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="mt-4 text-center">
+        <a href="{{ url_for('user_menu', username=username) }}" class="btn btn-secondary">Back to User Menu</a>
+
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

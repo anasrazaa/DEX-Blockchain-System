@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style2.css">
+    <style>
+        
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #343a40;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Blockchain</h1>
+        <div class="mt-4">
+            {% if chain %}
+                <ul class="list-group">
+                    {% for block in chain %}
+                        <li class="list-group-item">
+                            <strong>Index:</strong> {{ block.index }}<br>
+                            <strong>Data:</strong> {{ block.data }}<br>
+                            <strong>Timestamp:</strong> {{ block.timestamp }}<br>
+                            <strong>Previous Hash:</strong> {{ block.previous_hash }}<br>
+                            <strong>Current Hash:</strong> {{ block.current_hash }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No blocks in the chain.</p>
+            {% endif %}
+        </div>
+        <div class="mt-4 text-center">
+            <a href="{{ url_for('user_menu', username=username) }}" class="btn btn-secondary">Back to User Menu</a>
+
+        </div>
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

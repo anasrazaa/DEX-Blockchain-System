@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style3.css">
+    <style>
+        
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #343a40;
+        }
+        .transaction-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .transaction-list li {
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .btn-secondary {
+            display: block;
+            margin: 20px auto 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Transaction History</h1>
+
+        {% if transactions %}
+            <ul class="transaction-list">
+                {% for transaction in transactions %}
+                    <li>{{ transaction }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-center">No transactions found.</p>
+        {% endif %}
+
+        <a href="{{ url_for('user_menu', username=user.username) }}" class="btn btn-secondary">Back to User Menu</a>
+    </div>
+</body>
+</html>
